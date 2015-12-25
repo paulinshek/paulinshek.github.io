@@ -7,10 +7,11 @@
 
 # Site settings
 title: SomeRLovin
-email: your-email@domain.com
+email: paulin.shek@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  Paulin and Joe are both love getting their hands dirty with new data. 
-  This blog documents their adventures with data.
+  Paulin and Joe are data scientists both love getting their hands dirty with 
+  data. This blog documents their adventures, as they meet new statistical 
+  techniques, datasets and technologies.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://yourdomain.com" # the base hostname & protocol for your site
 twitter_username: paulinshek

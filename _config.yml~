@@ -1,0 +1,21 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+title: SomeRLovin
+email: paulin.shek@gmail.com
+description: > # this means to ignore newlines until "baseurl:"
+  Paulin and Joe are data scientists both love getting their hands dirty with 
+  data. This blog documents their adventures, as they meet new statistical 
+  techniques, datasets and technologies.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://yourdomain.com" # the base hostname & protocol for your site
+twitter_username: paulinshek
+github_username:  paulinshek
+
+# Build settings
+markdown: kramdown

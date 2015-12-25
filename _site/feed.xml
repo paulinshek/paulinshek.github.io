@@ -2,13 +2,35 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>SomeRLovin</title>
-    <description>Paulin and Joe are both love getting their hands dirty with new data.  This blog documents their adventures with data.
+    <description>Paulin and Joe are data scientists both love getting their hands dirty with  data. This blog documents their adventures, as they meet new statistical  techniques, datasets and technologies.
 </description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 24 Dec 2015 21:58:10 +0000</pubDate>
-    <lastBuildDate>Thu, 24 Dec 2015 21:58:10 +0000</lastBuildDate>
+    <pubDate>Fri, 25 Dec 2015 19:36:50 +0000</pubDate>
+    <lastBuildDate>Fri, 25 Dec 2015 19:36:50 +0000</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>Relationship Analysis</title>
+        <description>&lt;p&gt;Joe and I are both data fanatics, and we have been thinking of working on a project together for a long time. When we first started out, I used to always joke that we should do some analysis on other peoples relationships and use it to try and predict how long we’d last. Now we are over two years into our relationship, and we’ve finally deemed it stable enough to withhold the conclusions that we might find from the data! So here we go…&lt;/p&gt;
+
+&lt;p&gt;THE DATA:
+We were able to get access to the following datasets:&lt;/p&gt;
+
+&lt;p&gt;You can also embed plots, for example:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/figure/source/2015-12-25-relationship-prediction/unnamed-chunk-3-1.png&quot; alt=&quot;plot of chunk unnamed-chunk-3&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Note that the &lt;code class=&quot;highlighter-rouge&quot;&gt;echo = FALSE&lt;/code&gt; parameter was added to the code chunk to prevent printing of the R code that generated the plot.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 25 Dec 2015 00:00:00 +0000</pubDate>
+        <link>http://yourdomain.com/r/2015/12/25/relationship-prediction.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/r/2015/12/25/relationship-prediction.html</guid>
+        
+        
+        <category>R</category>
+        
+      </item>
     
       <item>
         <title>Relationship Analysis</title>
@@ -24,8 +46,8 @@ We were able to get access to the following datasets:&lt;/p&gt;
 &lt;p&gt;Note that the &lt;code class=&quot;highlighter-rouge&quot;&gt;echo = FALSE&lt;/code&gt; parameter was added to the code chunk to prevent printing of the R code that generated the plot.&lt;/p&gt;
 </description>
         <pubDate>Wed, 23 Dec 2015 00:00:00 +0000</pubDate>
-        <link>http://yourdomain.com/r/2015/12/23/relationship-prediciton.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/r/2015/12/23/relationship-prediciton.html</guid>
+        <link>http://yourdomain.com/r/2015/12/23/relationship-prediction.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/r/2015/12/23/relationship-prediction.html</guid>
         
         
         <category>R</category>

@@ -6,41 +6,51 @@ date: "2015-12-25"
 output: md_document
 categories: R
 ---
+```{r, echo = FALSE, eval = FALSE}
+## General prep
+
+# translate .Rmd files in the _sources dir to .md files in _posts
+# if jekyll is installed then it also compiles the site in _site
+# use serve = FALSE if you do not have jekyll installed/ don't want to preview the site
+# servr::jekyll() 
+
+# ggplot2 theme
+library(ggplot2)
+# TODO
+```
 
 ```{r, echo=FALSE, eval=FALSE}
-## Some set up first
+## Data prep
+
+# Navigate to where the data lives. Do not put it on github
 setwd("/home/paulin/Documents/SomeRLovin/Relationship Prediction")
 
 # convert the data from sav files (SAS) to RData objects
 library(foreign)
 
 # How Couples Stay Together data
-hcmst <- read.spss("data/HCMST/HCMST.sav") # waves 1,2,3
-hcmst4 <- read.spss("data/HCMST/HCMSTwave4.sav")
-hcmst5 <- read.spss("data/HCMST/HCMSTwave5.sav")
+hcmst <- as.data.frame(read.spss("data/HCMST/HCMST.sav")) # waves 1,2,3
+hcmst4 <- as.data.frame(read.spss("data/HCMST/HCMSTwave4.sav"))
+hcmst5 <- as.data.frame(read.spss("data/HCMST/HCMSTwave5.sav"))
 
-# National Couples Survey data
-ncs <- read.spss("data/ICPSR/data.sav")
-
-# Read in RData objects
+# TODO: Remove incomplete couples in the data
 
 ```
 
 Joe and I are both data fanatics, and we have been thinking of working on a project together for a long time. When we first started out, I used to always joke that we should do some analysis on other peoples relationships and use it to try and predict how long we'd last. Now we are over two years into our relationship, and we've finally deemed it stable enough to withhold the conclusions that we might find from the data! So here we go...
 
 THE DATA:
-We were able to get access to the following datasets:
+We used the HCMST dataset, which is a comprehensive dataset of survey data, featuring over 4000 people. It features 5 "waves" of surveys, spread over 5 years. For each person in the survey, their partner may not necessarily be also included in the survey, but there are ... many couples in the survey. We deemed this a sufficiently high number to only look at complete couples interviewed in the survey. 
 
 
 
 ```{r, echo=FALSE, eval=FALSE}
-summary(cars)
+# TODO: make a dataset which joins the waves together, keeping the columns related to break up at each wave
+
+# Plot the proportion of people eligible for waves 2,3,4,5 (ie. are they still together?)
+library(ggplot2)
+ggplot(data = hcmst5, aes(w5x_qualified)) + geom_bar()
+ggplot(data = hcmst4, aes(w4_xqualified)) + geom_bar()
+ggplot(data = hcmst, aes(w3_broke_up)) + geom_bar()
+ggplot(data = hcmst, aes(w2_broke_up)) + geom_bar()
 ```
-
-You can also embed plots, for example:
-
-```{r, echo=FALSE}
-plot(cars)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

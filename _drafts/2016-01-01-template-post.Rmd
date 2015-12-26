@@ -1,0 +1,27 @@
+---
+layout: post
+title: "template post"
+author: "Paulin and Joe"
+date: "26 December 2015"
+output: md_document
+categories: R
+---
+```{r, echo  = FALSE, eval = FALSE}
+## General Prep
+
+## translate .Rmd files in the _sources dir to .md files in _posts
+# if jekyll is installed then it also compiles the site in _site
+# use serve = FALSE if you do not have jekyll installed/ don't want to preview the site
+# servr::jekyll() 
+
+# TODO: ggplot2 theme
+library(ggplot2)
+
+```
+
+```{r, echo = FALSE, eval = FALSE}
+## Data Prep
+
+# Navigate to where the data lives. Do not put it on github
+setwd("/home/paulin/Documents/SomeRLovin/Relationship Prediction")
+```

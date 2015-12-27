@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: Post
 title: "Relationship Analysis"
 author: "Paulin"
 date: "2015-12-25"
@@ -8,9 +8,6 @@ categories: R
 ---
 
 
-```
-## Loading required package: methods
-```
 
 
 
@@ -21,4 +18,4 @@ We used the HCMST dataset, which is a comprehensive dataset of survey data, feat
 
 
 
-![Grey denotes the repondents who declined to answer a follow-up survey, or where not in a relationship in wave 1, in the first place](/figure/source/2015-12-25-relationship-prediction/unnamed-chunk-4-1.png) 
+

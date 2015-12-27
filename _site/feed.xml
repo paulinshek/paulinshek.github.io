@@ -6,48 +6,26 @@
 </description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 25 Dec 2015 19:36:50 +0000</pubDate>
-    <lastBuildDate>Fri, 25 Dec 2015 19:36:50 +0000</lastBuildDate>
+    <pubDate>Sun, 27 Dec 2015 23:14:25 +0000</pubDate>
+    <lastBuildDate>Sun, 27 Dec 2015 23:14:25 +0000</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
         <title>Relationship Analysis</title>
-        <description>&lt;p&gt;Joe and I are both data fanatics, and we have been thinking of working on a project together for a long time. When we first started out, I used to always joke that we should do some analysis on other peoples relationships and use it to try and predict how long we’d last. Now we are over two years into our relationship, and we’ve finally deemed it stable enough to withhold the conclusions that we might find from the data! So here we go…&lt;/p&gt;
+        <description>&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+## Loading required package: methods
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Joe and I are both data fanatics, and we have been thinking of working on a project together for a long time. When we first started out, I used to always joke that we should do some analysis on other peoples relationships and use it to try and predict how long we’d last. Now we are over two years into our relationship, and we’ve finally deemed it stable enough to withhold the conclusions that we might find from the data! So here we go…&lt;/p&gt;
 
 &lt;p&gt;THE DATA:
-We were able to get access to the following datasets:&lt;/p&gt;
+We used the HCMST dataset, which is a comprehensive dataset of survey data, featuring over 4000 people. It features 5 “waves” of surveys, spread over 5 years. For each person in the survey, their partner may not necessarily be also included in the survey, but there are … many couples in the survey. We deemed this a sufficiently high number to only look at complete couples interviewed in the survey.&lt;/p&gt;
 
-&lt;p&gt;You can also embed plots, for example:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/figure/source/2015-12-25-relationship-prediction/unnamed-chunk-3-1.png&quot; alt=&quot;plot of chunk unnamed-chunk-3&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Note that the &lt;code class=&quot;highlighter-rouge&quot;&gt;echo = FALSE&lt;/code&gt; parameter was added to the code chunk to prevent printing of the R code that generated the plot.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/figure/source/2015-12-25-relationship-prediction/unnamed-chunk-4-1.png&quot; alt=&quot;Grey denotes the repondents who declined to answer a follow-up survey, or where not in a relationship in wave 1, in the first place&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 25 Dec 2015 00:00:00 +0000</pubDate>
         <link>http://yourdomain.com/r/2015/12/25/relationship-prediction.html</link>
         <guid isPermaLink="true">http://yourdomain.com/r/2015/12/25/relationship-prediction.html</guid>
-        
-        
-        <category>R</category>
-        
-      </item>
-    
-      <item>
-        <title>Relationship Analysis</title>
-        <description>&lt;p&gt;Joe and I are both data fanatics, and we have been thinking of working on a project together for a long time. When we first started out, I used to always joke that we should do some analysis on other peoples relationships and use it to try and predict how long we’d last. Now we are over two years into our relationship, and we’ve finally deemed it stable enough to withhold the conclusions that we might find from the data! So here we go…&lt;/p&gt;
-
-&lt;p&gt;THE DATA:
-We were able to get access to the following datasets:&lt;/p&gt;
-
-&lt;p&gt;You can also embed plots, for example:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/figure/source/2015-12-24-relationship-prediciton/unnamed-chunk-3-1.png&quot; alt=&quot;plot of chunk unnamed-chunk-3&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Note that the &lt;code class=&quot;highlighter-rouge&quot;&gt;echo = FALSE&lt;/code&gt; parameter was added to the code chunk to prevent printing of the R code that generated the plot.&lt;/p&gt;
-</description>
-        <pubDate>Wed, 23 Dec 2015 00:00:00 +0000</pubDate>
-        <link>http://yourdomain.com/r/2015/12/23/relationship-prediction.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/r/2015/12/23/relationship-prediction.html</guid>
         
         
         <category>R</category>

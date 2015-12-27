@@ -7,11 +7,37 @@ output: md_document
 categories: R
 ---
 ```{r, echo = FALSE, eval = FALSE}
-## General prep
+# TODO: Turn this into a function that will handle the world!!!!!
+#' @description a function that will handle factors
+#' @param x a vector of factors
+#' @param oldStatusLevels the levels to be replaced # TODO: change this into a named list
+#' @param keepStatusLevels a vector of the factors to keep the same
+#' @param removeStatusLevels an optional vector of the factors to remove
+tidyStatus <- function(x){
+  oldStatusLevels <- c("Partner deceased", "Still together") # the levels to be replaced
+  keepStatusLevels <- "Broke up"
+  newStatusLevel <- "Broke up or partner deceased" # must be single character
+  removeStatusLevels <- NULL
+  levels(x) <- c(sort(c(oldStatusLevels, keepStatusLevels)), newStatusLevel)
+  res <- ifelse(x %in% oldStatusLevels, newStatusLevel, x)
+  levels(res) <- c(sort(keepStatusLevels), newStatusLevel)
+  return(res)
+}
 
+
+```
+```{r, echo = FALSE, eval = TRUE}
+## General prep
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, error = FALSE)
+
+# set default chunk options
+
+
+# source: http://data.stanford.edu/hcmst
 # translate .Rmd files in the _sources dir to .md files in _posts
 # if jekyll is installed then it also compiles the site in _site
 # use serve = FALSE if you do not have jekyll installed/ don't want to preview the site
+# setwd("/home/paulin/Documents/paulinshek.github.io")
 # servr::jekyll() 
 
 # ggplot2 theme
@@ -19,21 +45,19 @@ library(ggplot2)
 # TODO
 ```
 
-```{r, echo=FALSE, eval=FALSE}
+```{r}
 ## Data prep
 
 # Navigate to where the data lives. Do not put it on github
-setwd("/home/paulin/Documents/SomeRLovin/Relationship Prediction")
+dataPath <- "/home/paulin/Documents/SomeRLovin/Relationship Prediction/data/HCMST"
 
 # convert the data from sav files (SAS) to RData objects
 library(foreign)
 
 # How Couples Stay Together data
-hcmst <- as.data.frame(read.spss("data/HCMST/HCMST.sav")) # waves 1,2,3
-hcmst4 <- as.data.frame(read.spss("data/HCMST/HCMSTwave4.sav"))
-hcmst5 <- as.data.frame(read.spss("data/HCMST/HCMSTwave5.sav"))
-
-# TODO: Remove incomplete couples in the data
+hcmst <- as.data.frame(read.spss(file.path(dataPath, "HCMST.sav"))) # waves 1,2,3
+hcmst4 <- as.data.frame(read.spss(file.path(dataPath, "HCMSTwave4.sav")))
+hcmst5 <- as.data.frame(read.spss(file.path(dataPath, "HCMSTwave5.sav")))
 
 ```
 
@@ -44,13 +68,41 @@ We used the HCMST dataset, which is a comprehensive dataset of survey data, feat
 
 
 
-```{r, echo=FALSE, eval=FALSE}
+```{r, fig.cap="Grey denotes the repondents who declined to answer a follow-up survey, or where not in a relationship in wave 1, in the first place", warning=FALSE}
 # TODO: make a dataset which joins the waves together, keeping the columns related to break up at each wave
+library(dplyr)
+relationshipStatusOverWave <- data.frame(`Original relationship status` = hcmst$qflag, 
+                           `Status at wave 2` = hcmst$w2_broke_up, 
+                           `Status at wave 3` = hcmst$w3_broke_up, 
+                           `Status at wave 4` = hcmst4$w4_broke_up, 
+                           `Status at wave 5` = hcmst5$w5_broke_up,
+                           check.names = FALSE)
 
-# Plot the proportion of people eligible for waves 2,3,4,5 (ie. are they still together?)
+relationshipStatusOverWave <- relationshipStatusOverWave %>% 
+  filter_(~`Original relationship status`=="partnered") %>% 
+  select(starts_with("Status"))
+
+
+tempCombine <- function(x){
+  x <- as.character(x)
+  res <- ifelse(x %in% c("broke up", "partner deceased", "partner passed away"), "Broke up or partner deceased", x)
+  res <- ifelse(res=="still together", "Still together", res)
+  levels(res) <- c("Still together", "Broke up or partner deceased")
+  return(res)
+}
+relationshipStatusOverWave <- lapply(relationshipStatusOverWave, tempCombine)
+
+N <- length(relationshipStatusOverWave[[1]])
+relationshipStatusOverWave <- lapply(relationshipStatusOverWave, as.character)
+status <- do.call(c, relationshipStatusOverWave)
+names(status) <- NULL
+status <- factor(status, levels = c("Still together", "Broke up or partner deceased"))
+wave <- rep(2:5, each = N)
+longData <- data.frame(Wave = wave, Status = status)
+
+
 library(ggplot2)
-ggplot(data = hcmst5, aes(w5x_qualified)) + geom_bar()
-ggplot(data = hcmst4, aes(w4_xqualified)) + geom_bar()
-ggplot(data = hcmst, aes(w3_broke_up)) + geom_bar()
-ggplot(data = hcmst, aes(w2_broke_up)) + geom_bar()
+ggplot(data = longData, aes(x = Wave, fill = Status)) + geom_bar() + 
+  ggtitle("Barchart to show the relationship status \nof each survey respondent at each wave \nof the survey") + ylab("Count")
+
 ```

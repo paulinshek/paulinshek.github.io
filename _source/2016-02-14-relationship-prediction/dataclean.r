@@ -13,7 +13,7 @@ hcmst5 = as.data.frame(read.spss(file.path(dataPath, "HCMSTwave5.sav")))
 orig = hcmst[,1:281]
 dim(orig)
 
-# ditch weight2, its the same as weight1
+# ditch weight2, it's the same as weight1
 
 orig = orig[,-3]
 

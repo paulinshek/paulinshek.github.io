@@ -6,16 +6,59 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: SomeRLovin
-email: paulin.shek@gmail.com
-description: > # this means to ignore newlines until "baseurl:"
+# Dependencies
+markdown:	kramdown
+
+# Setup
+title:            SomeRLovin
+tagline:          'blog'
+description:      >
   Paulin and Joe are data scientists both love getting their hands dirty with 
   data. This blog documents their adventures, as they meet new statistical 
   techniques, datasets and technologies.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://yourdomain.com" # the base hostname & protocol for your site
-twitter_username: paulinshek
-github_username:  paulinshek
+url:              http://paulinshek.github.io
+baseurl:          
+commentsystem:    google
+disqus:           example
 
-# Build settings
-markdown: kramdown
+paginate: 5
+gems: [jekyll-paginate]
+
+author:
+  name:           Paulin and Joe
+
+# Custom vars
+icon:             /assets/images/icon.png
+cover:            /assets/images/cover.jpg
+
+social:
+  - icon:         twitter
+    url:          https://twitter.com/iancamporez
+    desc:         Follow me on twitter
+
+  - icon:         github
+    url:          https://github.com/camporez
+    desc:         Fork me on github
+
+  - icon:         feed
+    url:          http://camporez.github.io/atom.xml
+    desc:         Subscribe to my feed
+
+menu:
+  - title:        Home
+    url:          /
+
+  - title:        About
+    url:          /about
+
+copyright:
+  author:         Camporez
+  url:            http://camporez.github.io
+  type_title:     Some rights reserved
+  type_url:       http://creativecommons.org/licenses/by-nc/2.5
+
+parallax:         false
+
+
+# Default Theme Color for Chrome on Android Lollipop (Use RGB ColorCode without `#`, e.g.: `db5945`)
+theme_color:       7E9576

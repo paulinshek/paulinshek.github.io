@@ -21,8 +21,9 @@ baseurl:
 commentsystem:    google
 disqus:           example
 
-paginate: 5
 gems: [jekyll-paginate]
+paginate: 5
+paginate_path: "/blog/page:num/"
 
 author:
   name:           Paulin and Joe

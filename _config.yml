@@ -37,10 +37,6 @@ social:
     url:          https://twitter.com/iancamporez
     desc:         Follow me on twitter
 
-  - icon:         github
-    url:          https://github.com/camporez
-    desc:         Fork me on github
-
   - icon:         feed
     url:          http://camporez.github.io/atom.xml
     desc:         Subscribe to my feed

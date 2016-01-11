@@ -5,7 +5,7 @@ author: "Paulin"
 date: "2015-12-25"
 output: md_document
 categories: R
-quote: "The Infinite's Nymphet has a new look, a new codename, and a new platform!"
+quote: "We could be the anti-valentines day, and predict the end of our relationship, instead!"
 image: false
 video: false
 comments: true

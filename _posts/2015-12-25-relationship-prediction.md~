@@ -5,6 +5,10 @@ author: "Paulin"
 date: "2015-12-25"
 output: md_document
 categories: R
+quote: "The Infinite's Nymphet has a new look, a new codename, and a new platform!"
+image: false
+video: false
+comments: true
 ---
 
 

@@ -66,7 +66,80 @@ names(orig)[36] = "intdate"
 orig = orig[,-37]# Q duration
 names(orig)[37] = "relationship"
 names(orig)[38] = "lgb"
-orig = orig[,-39]#older version of lgb
-orig = orig[,-40]# No idea what this means
+orig = orig[,-c(39,40)]#older version of lgb
 
-orig = orig[,1:38]
+respondent = orig[,1:38]
+
+### We've cut down all the information about the respondent. Now to do same for their partner
+
+partner = orig[,39:ncol(orig)]
+names(partner)[1] = "married"
+names(partner)[2] = "lgb2"
+names(partner)[3] = "sexpartner"
+partner = partner[,-4]
+names(partner)[4] = "pgender"
+names(partner)[5] = "pgendersame"
+names(partner)[6] = "phispanic"
+names(partner)[7] = "prace"
+partner = partner[,-8]
+names(partner)[8] = "preligion"
+names(partner)[9] = "preligionchange"
+partner = partner[,-10]
+names(partner)[10] = "page"
+names(partner)[11] = "peducation"
+names(partner)[12] = "pmumeducation"
+names(partner)[13] = "ppolitics"
+partner = partner[,-c(14,15)]
+names(partner)[14] = "mumeducation"
+names(partner)[15] = "choodcountry"
+names(partner)[16] = "relspermonth"
+names(partner)[17] = "totmarriagescur"
+names(partner)[18] = "totmarriages"
+partner = partner[,-c(19,20)]
+names(partner)[19] = "attraction"
+partner = partner[,-c(20,21,22,23,24,25)]
+names(partner)[20] = "livingtog"
+names(partner)[21] = "everlivedtog"
+names(partner)[22] = "metage"
+partner = partner[,-23]
+names(partner)[23] = "romaceage"
+partner = partner[,-24]
+names(partner)[24] = "moveinage"
+partner = partner[,-25]
+names(partner)[25] = "marriedage"
+partner = partner[,-26]
+partner = partner[,-c(26,27)]
+names(partner)[26] = "timetogether" 
+names(partner)[27] = "income"
+partner = partner[,-28]
+names(partner)[28] = "sameschool"
+names(partner)[29] = "sameuni"
+names(partner)[30] = "gupsamecity"
+names(partner)[31] = "parentsmet"
+names(partner)[32] = "parentsalive"
+names(partner)[33] = "parentapprove"
+names(partner)[34] = "metwork"
+names(partner)[35] = "metschool"
+names(partner)[36] = "metchurch"
+names(partner)[37] = "metdservice"
+names(partner)[38] = "metvacation"
+names(partner)[39] = "metnightout"
+names(partner)[40] = "metsocialclub"
+names(partner)[41] = "metprivparty"
+names(partner)[42] = "metother"
+partner = partner[,-43]
+names(partner)[43] ="internetmet"
+names(partner)[44] = "introfam"
+names(partner)[45] = "introfriend"               
+names(partner)[46] = "introcowork"
+names(partner)[47] = "introclassmate"
+names(partner)[48] = "introneigh"
+names(partner)[49] = "introself"
+names(partner)[50] = "introother"
+partner = partner[,-51]
+names(partner)[51] = "relqual"
+
+
+partner = partner[,1:51]
+
+

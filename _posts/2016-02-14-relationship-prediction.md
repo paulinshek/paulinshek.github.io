@@ -8,7 +8,6 @@ categories: R
 quote: "We could be the anti-valentines day, and predict the end of our relationship, instead!"
 image: 
   url : /media/2016-02-14-relationship-anaylsis/cover.jpg
-  source: /assets/images/bbt1.jpg
 video: false
 comments: true
 ---

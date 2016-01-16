@@ -142,4 +142,25 @@ names(partner)[51] = "relqual"
 
 partner = partner[,1:51]
 
+outcome1 = as.vector(hcmst$w2_broke_up)
 
+bup1 = rep(0,nrow(partner))
+bup1[which(outcome1=="broke up")] = 1
+bup1[which(outcome1=="partner passed away")] = NA
+bup1[which(is.na(outcome1))]=NA
+
+data = cbind(partner,respondent)
+
+lm1 = glm(bup1~metschool+
+            metwork+
+            metchurch+
+            metdservice+
+            metvacation+
+            metnightout+
+            metsocialclub+
+            metprivparty,data = data)
+
+logit=function(x){return(exp(x)/(exp(x)+1))}
+invlogit = function(x){return(log(x/(1 -x)))}
+
+logit(invlogit(0.5)-(1.04546+1.090909)*0.0554)

@@ -2,11 +2,11 @@
 layout: post
 title: "Relationship Analysis"
 author: "Paulin"
-date: "2015-12-25"
+date: "2016-02-14"
 output: md_document
 categories: R
 quote: "We could be the anti-valentines day, and predict the end of our relationship, instead!"
-image: false
+image: "assets/images/bbt1.jpg"
 video: false
 comments: true
 ---

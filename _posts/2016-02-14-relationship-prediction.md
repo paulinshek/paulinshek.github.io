@@ -2,11 +2,12 @@
 layout: post
 title: "Relationship Analysis"
 author: "Paulin"
-date: "2015-12-25"
+date: "2016-02-14"
 output: md_document
 categories: R
-quote: "The Infinite's Nymphet has a new look, a new codename, and a new platform!"
-image: false
+quote: "We could be the anti-valentines day, and predict the end of our relationship, instead!"
+image: 
+  url : /media/2016-02-14-relationship-anaylsis/cover.jpg
 video: false
 comments: true
 ---

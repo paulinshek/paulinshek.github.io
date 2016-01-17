@@ -2,7 +2,7 @@
 ### Should probably just all be built into a function
 library(foreign)
 
-dataPath = "C:/Users/user/Dropbox/Paulin and Joe/HCMST"
+dataPath = "/home/paulin/Documents/SomeRLovin/Relationship Prediction/data/HCMST"
 
 # How Couples Stay Together data
 hcmst =as.data.frame(read.spss(file.path(dataPath, "HCMST.sav"))) # waves 1,2,3

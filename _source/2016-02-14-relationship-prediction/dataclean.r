@@ -11,6 +11,7 @@ hcmst5 = as.data.frame(read.spss(file.path(dataPath, "HCMSTwave5.sav")))
 
 
 orig = hcmst[,1:281]
+orign = orig[which(orig$qflag=="partnered"),]
 dim(orig)
 
 # ditch weight2, it's the same as weight1

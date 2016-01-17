@@ -1,6 +1,8 @@
 PATH = "C:/Users/user/Documents/Stats/Blog/"
+PATH = "~/Documents/paulinshek.github.io/"
 
 source(paste0(PATH,"_source/2016-02-14-relationship-prediction/dataclean.R"))
+
 
 outcome1 = as.vector(hcmst$w2_broke_up)
 
@@ -29,7 +31,7 @@ data$preligion=as.vector(data$preligion)
 data$samereligion[which(data$religion==data$preligion)] = 1
 
 data$howmet = "other"
-data$howmet[which(data$metschool=="yes")]="school"su
+data$howmet[which(data$metschool=="yes")]="school"
 data$howmet[which(data$metwork=="yes")]="work"
 data$howmet[which(data$metchurch=="yes")]="church"
 data$howmet[which(data$metdservice=="yes")]="dservice"
@@ -44,23 +46,31 @@ data$relstat[which(data$sexpartner=="yes, i have a sexual partner (boyfriend or 
 data$relstat[which(data$sexpartner=="i have a romantic partner who is not yet a sexual partner")]="nonsexpartner"
 
 data$livingtog=as.vector(data$livingtog)
-data$livingtog[which(data$livingtog=="refused")]="NA"
+data$livingtog[which(data$livingtog=="refused")]=NA
+
+data$bup1=bup1
 lm1 = glm(bup1~relstat+
-            I((age+page)/2)+
-            I(pmin(age,page)/pmax(age,page))+
-            I(age-romanceage)+I(romanceage-metage)+
+            #I((age+page)/2)+
+            #I(pmin(age,page)/pmax(age,page))+
+            I(age-romanceage)+
+            I(romanceage-metage)+
             income+
             samepolitics+
             samereligion+
             howmet+
             hhincomeg+
-            kidsu18+
+            I(kidsu18==0)+
             relqual+
-            #sexpartner+
             livingtog,
-            data = data,
+            data = data[which(!is.na(bup1)),],
             family = binomial(link = logit))
           
 logit=function(x){return(exp(x)/(exp(x)+1))}
 invlogit = function(x){return(log(x/(1 -x)))}
           
+probs = logit(predict(lm1,data))
+CalibrationPlot(probs,bup1,bins = 20)
+
+summary(lm1)
+
+lm2 = step(lm1)

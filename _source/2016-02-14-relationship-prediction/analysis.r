@@ -1,8 +1,9 @@
 PATH = "C:/Users/user/Documents/Stats/Blog/"
 PATH = "~/Documents/paulinshek.github.io/"
+library(dplyr)
 
 source(paste0(PATH,"_source/2016-02-14-relationship-prediction/dataclean.R"))
-
+source(paste0(PATH,"_source/2016-02-14-relationship-prediction/calibrationPlotModelFitting.R"))
 
 outcome1 = as.vector(hcmst$w2_broke_up)
 
@@ -49,20 +50,26 @@ data$livingtog=as.vector(data$livingtog)
 data$livingtog[which(data$livingtog=="refused")]=NA
 
 data$bup1=bup1
+rm(bup1)
+
+datatouse = data %>% filter(!is.na(page),!is.na(bup1))
+
 lm1 = glm(bup1~relstat+
-            #I((age+page)/2)+
-            #I(pmin(age,page)/pmax(age,page))+
+            I((age+page)/2)+
+            I(pmin(age,page)/pmax(age,page))+
             I(age-romanceage)+
-            I(romanceage-metage)+
+            I(log(age-romanceage+1))+
+            I(log(log(age-romanceage+1)+1))+
+            #I(romanceage-metage)+
             income+
-            samepolitics+
+            #samepolitics+
             samereligion+
             howmet+
             hhincomeg+
             I(kidsu18==0)+
             relqual+
             livingtog,
-            data = data[which(!is.na(bup1)),],
+            data = datatouse,
             family = binomial(link = logit))
           
 logit=function(x){return(exp(x)/(exp(x)+1))}
@@ -74,3 +81,19 @@ CalibrationPlot(probs,bup1,bins = 20)
 summary(lm1)
 
 lm2 = step(lm1)
+
+levels(data$education)=c(NA,NA,rep("school",8),"hs","collnodeg",rep("degree",2),"masters","doc")
+levels(data$peducation)=c(NA,rep("school",8),"hs","collnodeg",rep("degree",2),"masters","doc")
+
+data$education = as.numeric(data$education)
+data$peducation = as.numeric(data$peducation)
+
+data$edudiff = abs(data$education-data$peducation)
+
+levels(data$mumeducation)=c(NA,rep("school",8),"hs","collnodeg",rep("degree",2),"masters","doc")
+levels(data$pmumeducation)=c(NA,rep("school",8),"hs","collnodeg",rep("degree",2),"masters","doc")
+
+data$mumeducation = as.numeric(data$mumeducation)
+data$pmumeducation = as.numeric(data$pmumeducation)
+
+data$mumedudiff = abs(data$mumeducation-data$pmumeducation)

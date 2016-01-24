@@ -2,8 +2,8 @@ PATH = "C:/Users/user/Documents/Stats/Blog/"
 PATH = "~/Documents/paulinshek.github.io/"
 library(dplyr)
 
-source(paste0(PATH,"_source/2016-02-14-relationship-prediction/dataclean.R"))
-source(paste0(PATH,"_source/2016-02-14-relationship-prediction/calibrationPlotModelFitting.R"))
+source(paste0(PATH,"_source/2016-02-14-relationship-prediction/dataclean.r"))
+source(paste0(PATH,"_source/2016-02-14-relationship-prediction/calibrationPlotModelFitting.r"))
 
 outcome1 = as.vector(hcmst$w2_broke_up)
 
@@ -75,12 +75,12 @@ lm1 = glm(bup1~relstat+
 logit=function(x){return(exp(x)/(exp(x)+1))}
 invlogit = function(x){return(log(x/(1 -x)))}
           
-probs = logit(predict(lm1,data))
-CalibrationPlot(probs,bup1,bins = 20)
+probs = logit(predict(lm1,datatouse))
+CalibrationPlot(probs,datatouse$bup1,bins = 20)
 
 summary(lm1)
 
-lm2 = step(lm1)
+lm2 = step(lm1) # bup1 ~ relstat + I(log(age - romanceage + 1)) + relqual + livingtog
 
 levels(data$education)=c(NA,NA,rep("school",8),"hs","collnodeg",rep("degree",2),"masters","doc")
 levels(data$peducation)=c(NA,rep("school",8),"hs","collnodeg",rep("degree",2),"masters","doc")
@@ -97,3 +97,43 @@ data$mumeducation = as.numeric(data$mumeducation)
 data$pmumeducation = as.numeric(data$pmumeducation)
 
 data$mumedudiff = abs(data$mumeducation-data$pmumeducation)
+
+data$parentapprove=as.vector(data$parentapprove)
+data$parentapprove[which(data$parentapprove=="refused")]=NA
+
+datapaste = apply(data,MARGIN = 1,FUN = paste,collapse="~")
+
+datatouse = data %>% filter(!is.na(page), 
+                            !is.na(bup1), 
+                            !is.na(edudiff), 
+                            !is.na(mumedudiff),
+                            !grepl("refused", datapaste))
+
+
+lm3 = glm(bup1~relstat+
+            I((age+page)/2)+
+            I(pmin(age,page)/pmax(age,page))+
+            I(age-romanceage)+
+            I(log(age-romanceage+1))+
+            I(log(log(age-romanceage+1)+1))+
+            #I(romanceage-metage)+
+            income+
+            #samepolitics+
+            samereligion+
+            howmet+
+            hhincomeg+
+            kidsu18+
+            relqual+
+            livingtog + 
+            mumedudiff + 
+            #parentapprove +
+            edudiff+
+            I(education+peducation)+
+            I(log(relspermonth+1)),
+            data = datatouse,
+            family = binomial(link = logit))
+
+lm4 = step(lm3)
+
+probs = logit(predict(lm4,datatouse))
+CalibrationPlot(probs,datatouse$bup1,bins = 20)

@@ -18,7 +18,8 @@ CalibrationPlot = function(prob, result,bins=100, detail = FALSE,range = c(0,1))
 	}
 	
 	# plot observed against predicted probabilities
-	plot(meanprob, observedprop, xlim = range,ylim = range)
+	plot(meanprob, observedprop, xlim = range,ylim = range,pch="")
+	text(meanprob, observedprop,labels = prediction,cex=0.5)
 	abline(0,1)
 	print(summary(lm(observedprop ~ meanprob - 1)))
 	
@@ -28,58 +29,4 @@ CalibrationPlot = function(prob, result,bins=100, detail = FALSE,range = c(0,1))
 		cat("-------------------------------------------------------------\n")
 		print(anova(lm(observedprop ~ meanprob - 1)))
 	}
-}
-
-
-
-
-
-
-
-
-
-###### best doubling function ever
-
-Create2v2 = function(daf=formated_data){
-
-	tourn_2v2 = data.frame()
-
-		for(tournamentID in unique(daf$race)){
-			#selects the data related to the current tournament
-			current_tourn = daf[which(daf$race == tournamentID),]
-			
-			#repeats the rows in the dataframe as many times as there are players in the tournament (for each row)
-			current_tourn_2v2 = current_tourn[rep(seq_along(current_tourn$race), each = nrow(current_tourn)),]
-			#renames the columns
-			# colnames(current_tourn_2v2) = c("year","p1","position_p1","score_p1","tournament","race","tmpposition","date")
-			
-			#repeats the dataframe as many times as there are players in the tournament
-			#and keeps only the columns we need.
-			extracols = current_tourn[rep(seq_along(current_tourn$race), times = nrow(current_tourn)),which(colnames(current_tourn) %in% c("team","team_rank","team_result"))]
-			#renames the columns
-			colnames(extracols) = c("team2","team_rank2","team_result2")
-			
-			# binds the two dataframes together
-			current_tourn_2v2 = cbind(current_tourn_2v2,extracols)
-			rownames(current_tourn_2v2) <- c()
-			
-			# removes the rows when a player is against itself
-			current_tourn_2v2 = current_tourn_2v2[which(!(current_tourn_2v2$team == current_tourn_2v2$team2)),]
-			
-			# # creates unique match ID:
-			
-			CreateID = function(index){ 
-				matchid = paste(sort(unlist(strsplit(paste(current_tourn_2v2$team[index],current_tourn_2v2$team2[index],current_tourn_2v2$race[index],sep=""),split=""))),collapse="")
-				return(matchid)
-			}
-			
-			matchID = sapply(seq_along(current_tourn_2v2$team),CreateID,USE.NAMES=FALSE)
-			current_tourn_2v2 = current_tourn_2v2[which(!duplicated(matchID)),]
-
-			print(table(is.na(current_tourn_2v2$team_rank)))
-		
-			# binds it to the big dataframe with all tournaments
-			tourn_2v2 = rbind(tourn_2v2,current_tourn_2v2)
-		}
-	return(tourn_2v2)
 }

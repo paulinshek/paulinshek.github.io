@@ -1,31 +1,12 @@
 ---
 layout: post
 title: "Relationship Analysis"
-author: "Paulin"
-date: "2015-12-25"
+author: "Paulin and Joe"
+date: "2016-02-14"
 output: md_document
 categories: R
 ---
-```{r, echo = FALSE, eval = FALSE}
-# TODO: Turn this into a function that will handle the world!!!!!
-#' @description a function that will handle factors
-#' @param x a vector of factors
-#' @param oldStatusLevels the levels to be replaced # TODO: change this into a named list
-#' @param keepStatusLevels a vector of the factors to keep the same
-#' @param removeStatusLevels an optional vector of the factors to remove
-tidyStatus <- function(x){
-  oldStatusLevels <- c("Partner deceased", "Still together") # the levels to be replaced
-  keepStatusLevels <- "Broke up"
-  newStatusLevel <- "Broke up or partner deceased" # must be single character
-  removeStatusLevels <- NULL
-  levels(x) <- c(sort(c(oldStatusLevels, keepStatusLevels)), newStatusLevel)
-  res <- ifelse(x %in% oldStatusLevels, newStatusLevel, x)
-  levels(res) <- c(sort(keepStatusLevels), newStatusLevel)
-  return(res)
-}
 
-
-```
 ```{r, echo = FALSE, eval = TRUE}
 ## General prep
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, error = FALSE)
@@ -60,12 +41,6 @@ hcmst4 <- as.data.frame(read.spss(file.path(dataPath, "HCMSTwave4.sav")))
 hcmst5 <- as.data.frame(read.spss(file.path(dataPath, "HCMSTwave5.sav")))
 
 ```
-
-Joe and I are both data fanatics, and we have been thinking of working on a project together for a long time. When we first started out, I used to always joke that we should do some analysis on other peoples relationships and use it to try and predict how long we'd last. Now we are over two years into our relationship, and we've finally deemed it stable enough to withhold the conclusions that we might find from the data! So here we go...
-
-THE DATA:
-We used the HCMST dataset, which is a comprehensive dataset of survey data, featuring over 4000 people. It features 5 "waves" of surveys, spread over 5 years. For each person in the survey, their partner may not necessarily be also included in the survey, but there are ... many couples in the survey. We deemed this a sufficiently high number to only look at complete couples interviewed in the survey. 
-
 
 
 ```{r, fig.cap="Grey denotes the repondents who declined to answer a follow-up survey, or where not in a relationship in wave 1, in the first place", warning=FALSE}
@@ -106,3 +81,35 @@ ggplot(data = longData, aes(x = Wave, fill = Status)) + geom_bar() +
   ggtitle("Barchart to show the relationship status \nof each survey respondent at each wave \nof the survey") + ylab("Count")
 
 ```
+
+
+
+
+# Plan!
+
+* Intro
+- motivation
+- sentence about data
+
+* model
+- bit on significant parameters
+- "nearly" significant parameters/untestables
+- shiny app
+- Calibration plots/ other data plots 
+
+* Conclusion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

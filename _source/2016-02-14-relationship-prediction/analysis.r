@@ -1,4 +1,4 @@
-PATH = "C:/Users/user/Documents/Stats/Blog/"
+PATH = "/Users/Joe/Documents/Blog/"
 PATH = "~/Documents/paulinshek.github.io/"
 library(dplyr)
 
@@ -107,6 +107,7 @@ datatouse = data %>% filter(!is.na(page),
                             !is.na(bup1), 
                             !is.na(edudiff), 
                             !is.na(mumedudiff),
+                            !is.na(relspermonth),
                             !grepl("refused", datapaste))
 
 
@@ -120,7 +121,15 @@ lm3 = glm(bup1~relstat+
             income+
             #samepolitics+
             samereligion+
-            howmet+
+            metwork+
+            metschool+
+            metchurch+
+            metdservice+
+            metvacation+
+            metnightout+
+            metsocialclub+
+            metprivparty+
+            metother+
             hhincomeg+
             kidsu18+
             relqual+

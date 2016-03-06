@@ -136,10 +136,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  github-pages
+  github-pages (= 54)
   html-proofer (>= 1.4.0)
   jekyll (= 3.0.3)
-  jekyll-paginate
+  jekyll-paginate (= 1.1.0)
+  kramdown (= 1.9.0)
 
 BUNDLED WITH
    1.11.2

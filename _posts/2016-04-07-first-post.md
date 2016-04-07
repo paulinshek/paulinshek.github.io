@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "A bit about me and what to expect from this blog"
+title: "A bit about me"
 author: "Paulin"
 date: "2016-04-07"
 output: md_document

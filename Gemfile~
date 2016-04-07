@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'rake'
 gem 'jekyll', '=3.0.3'
 gem 'jekyll-paginate', '1.1.0'
 gem 'github-pages', '54'

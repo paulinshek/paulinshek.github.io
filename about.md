@@ -4,4 +4,6 @@ title: About
 permalink: /about/
 ---
 
-This is a blog by Paulin and Joe. We will blog about whatever interests us, mainly R, statistic and Computer Science.
+  Paulin is currently an R consultant at Mango Solutions. She is a recent Oxford graduate of Mathematics and Computer Science.
+  
+  This serves as the dumping ground for Paulin's thoughts on maths, statistics and programming.

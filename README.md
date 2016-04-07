@@ -1,10 +1,7 @@
-#Paulin and Joe's blog
+#Paulin's blog
 
-This is where Paulin and Joe's blog lives. We will be blogging about R, data, stats, and anything else that interests us.
-
-THIS IS WORK IN PROGRESS
-
+This is where my blog lives. I will be blogging about programming, data analysis and anything else that interests me.
 
 ##About the theme
-Check out [Thinny](https://github.com/camporez/Thinny) for the beautiful theme that we used!
+Thanks to Ian Camporez for this awesome theme, [Thinny](https://github.com/camporez/Thinny)!
 
